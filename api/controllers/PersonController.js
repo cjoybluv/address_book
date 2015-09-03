@@ -19,6 +19,10 @@ module.exports = {
         person.save(function(err,savedPerson) {
           res.send(savedPerson);
         });
+      }).catch(function(err) {
+        res.send(err);
+      }).catch(function(err) {
+        res.send(err);
       });
     });
   }

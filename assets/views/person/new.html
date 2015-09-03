@@ -1,0 +1,28 @@
+<h1>Create a Person</h1>
+<form ng-submit="createPerson()" name="newPersonForm" novalidate>
+  <div class="form-group" ng-class="{ 'has-error': newPersonForm.firstName.$touched && newPersonForm.firstName.$invalid }">
+    <label>First Name</label>
+    <input required ng-minlength="1" ng-maxlength="100" name="firstName" ng-model="newPerson.firstName" type="text" class="form-control" autofocus>
+    <div ng-if="newPersonForm.firstName.$touched" ng-messages="newPersonForm.firstName.$error" class="help-block">
+      <div ng-messages-include="/views/messages.html"></div>
+    </div>
+  </div>
+
+  <div class="form-group" ng-class="{ 'has-error': newPersonForm.lastName.$touched && newPersonForm.lastName.$invalid }">
+    <label>Last Name</label>
+    <input ng-minlength="1" required name="lastName" ng-model="newPerson.lastName" type="text" class="form-control">
+    <div ng-if="newPersonForm.lastName.$touched" ng-messages="newPersonForm.lastName.$error" class="help-block">
+      <div ng-messages-include="/views/messages.html"></div>
+    </div>
+  </div>
+
+  <div class="form-group" ng-class="{ 'has-error': newPersonForm.Notes.$touched && newPersonForm.Notes.$invalid }">
+    <label>Notes</label>
+    <textarea ng-maxlength="1000" name="Notes" ng-model="newPerson.Notes" class="form-control"></textarea>
+    <div ng-if="newPersonForm.Notes.$touched" ng-messages="newPersonForm.Notes.$error" class="help-block">
+      <div ng-messages-include="/views/messages.html"></div>
+    </div>
+  </div>
+  <button ng-disabled="newPersonForm.$invalid" type="submit" class="btn btn-primary">Create Person</button>
+
+</form>

@@ -19,6 +19,8 @@ module.exports = {
         category.save(function(err,savedCategory) {
           res.send(savedCategory);
         });
+      }).catch(function(err) {
+        res.send(err);
       });
     });
   }
