@@ -1,7 +1,3 @@
-<h1>
-  an Address Book
-  <a href="/person/new" class="pull-right glyphicon glyphicon-plus btn btn-success"></a>
-</h1>
 
 <table class="table table-hover">
   <thead>
@@ -9,7 +5,7 @@
       <th class="col-xs-2" ng-click="orderField='id'" ng-class="{active:(orderField=='id')}">Id</th>
       <th ng-click="orderField='lastName'" ng-class="{active:(orderField=='lastName')}">FullName</th>
       <th ng-click="orderField='updatedAt'" ng-class="{active:(orderField=='updatedAt')}">Updated</th>
-      <th></th>
+      <th><span class="pull-right"><a href="/person/new" class="pull-right glyphicon glyphicon-plus btn btn-xs btn-success"></a></span></th>
     </tr>
   </thead>
   <tbody>
@@ -17,10 +13,10 @@
       <td class="col-xs-2">{{person.id}}</td>
       <td><a href="/person/{{person.id}}">{{person.firstName}} {{person.lastName}}</a></td>
       <td>{{person.updatedAt | date:'short'}}</td>
-      <td>
-        <a ng-click="deletePerson(person)" class="glyphicon glyphicon-trash"></a>&nbsp;
+      <td><span class="pull-right">
+        <a ng-click="deletePerson(person)" class="glyphicon glyphicon-trash"></a>&nbsp;&nbsp;&nbsp;
         <a ng-click="editPerson(person)" class="glyphicon glyphicon-pencil"></a>
-      </td>
+      </span></td>
     </tr>
   </tbody>
 </table>

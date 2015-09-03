@@ -2,3 +2,27 @@
 
 <em>{{person.createdAt | date:'short'}}</em>
 <p>{{person.Notes}}</p>
+
+<div class="well" ng-repeat="contact in person.contacts track by contact.id">
+  <strong>{{contact.contact_type}}</strong><br/>
+  {{contact.email}} <br/>
+  {{contact.street}}, {{contact.city}} {{contact.zip}}<br/>
+  {{contact.phone}}<br/>
+  {{contact.lat}},{{contact.lng}}
+</div>
+
+
+<!-- <form ng-submit="addCategory()" role="form"> -->
+<form action="/api/person/{{person.id}}/categories" method="POST" role="form">
+  <div class="form-group">
+    <input name="name" ng-model="categoryNameToAdd" type="text" class="form-control" id="" placeholder="Add Category" autofocus>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div class="row">
+  <ul ng-repeat="category in person.categories track by category.id">
+    <li>{{category.name}}</li>
+  </ul>
+</div>
+

@@ -2,8 +2,9 @@ AddressBookApp.controller('PersonNewCtrl', ['$scope','Person','$location', funct
   console.log('PersonNewCtrl now');
 
   $scope.newPerson={
-    title:'',
-    body:''
+    firstName:'',
+    lastName:'',
+    Notes:''
   };
 
   $scope.createPerson = function() {
