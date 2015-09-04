@@ -31,6 +31,10 @@ AddressBookApp.config(['$routeProvider','$locationProvider','sailsResourceProvid
     templateUrl:'/views/person/show.html',
     controller:'PersonShowCtrl'
   })
+  .when('/test',{
+    templateUrl:'/views/test.html',
+    controller:'TestCtrl'
+  })
   .otherwise({
     templateUrl:'/views/404.html'
   });

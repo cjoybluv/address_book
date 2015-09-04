@@ -1,4 +1,4 @@
-AddressBookApp.controller('PersonShowCtrl', ['$scope','Person','$routeParams', '$http', function($scope,Person,$routeParams,$http){
+AddressBookApp.controller('PersonShowCtrl', ['$scope','Person','$routeParams', '$http','PersonContact','$modal', function($scope,Person,$routeParams,$http,PersonContact,$modal){
 
   $scope.person = {};
 
@@ -7,21 +7,36 @@ AddressBookApp.controller('PersonShowCtrl', ['$scope','Person','$routeParams', '
     $scope.person = person;
   });
 
-  // $scope.addCategory = function(){
-  //   console.log('addCategory',$scope.categoryNameToAdd);
-  //   console.log('addCategory:person',$scope.person);
+  $scope.addCategory = function(){
+    console.log('addCategory',$scope.categoryNameToAdd);
+    console.log('addCategory:person',$scope.person);
 
 
-  //   // $http({
-  //   //     method: 'POST',
-  //   //     url: '/api/person/'+$scope.person.id+'/categories',
-  //   //     params:{
-  //   //       name: $scope.categoryNameToAdd
-  //   //     }
-  //   //   }).success(function(data) {
-  //   //     console.log('addCategory:success',data);
-  //   // });
+    $http({
+        method: 'POST',
+        url: '/api/person/'+$scope.person.id+'/categories',
+        data:{
+          name: $scope.categoryNameToAdd
+        }
+      }).success(function(data) {
+        console.log('addCategory:success',data);
+        $scope.person = data;
+        $scope.categoryNameToAdd = '';
+    });
+  };
 
-  // };
+  $scope.addContact = function(person) {
+    console.log('addContact',person);
+    $modal.open({
+      templateUrl:'/views/person/addContactModal.html',
+      controller:'AddContactModalCtrl',
+      resolve:{
+        editPerson: function(){
+          return person;
+        }
+      }
+    });
+
+  };
 
 }]);

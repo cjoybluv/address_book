@@ -1,0 +1,57 @@
+<form ng-submit="createContact()" name="addContactForm" novalidate>
+  <div class="modal-header">
+      <h3 class="modal-title">Add a Contact</h3>
+      <h4>{{addContact.firstName}} {{addContact.lastName}}</h4>
+  </div>
+  <div class="modal-body">
+      <div class="form-group" ng-class="{ 'has-error': addContactForm.contact_type.$touched && addContactForm.contact_type.$invalid }">
+        <label>Contact Type</label>
+        <input required ng-minlength="1" ng-maxlength="100" name="contact_type" ng-model="addContact.contact.contact_type" type="text" class="form-control" autofocus>
+        <div ng-if="addContactForm.contact_type.$touched" ng-messages="addContactForm.contact_type.$error" class="help-block">
+          <div ng-messages-include="/views/messages.html"></div>
+        </div>
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-error': addContactForm.email.$touched && addContactForm.email.$invalid }">
+        <label>eMail</label>
+        <input name="email" ng-model="addContact.contact.email" type="text" class="form-control">
+        <div ng-if="addContactForm.email.$touched" ng-messages="addContactForm.email.$error" class="help-block">
+          <div ng-messages-include="/views/messages.html"></div>
+        </div>
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-error': addContactForm.street.$touched && addContactForm.street.$invalid }">
+        <label>Street</label>
+        <input name="street" ng-model="addContact.contact.street" type="text" class="form-control">
+        <div ng-if="addContactForm.street.$touched" ng-messages="addContactForm.street.$error" class="help-block">
+          <div ng-messages-include="/views/messages.html"></div>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error': addContactForm.city.$touched && addContactForm.city.$invalid }">
+        <label>City</label>
+        <input name="city" ng-model="addContact.contact.city" type="text" class="form-control">
+        <div ng-if="addContactForm.city.$touched" ng-messages="addContactForm.city.$error" class="help-block">
+          <div ng-messages-include="/views/messages.html"></div>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error': addContactForm.zip.$touched && addContactForm.zip.$invalid }">
+        <label>Zip</label>
+        <input ng-minlength="5" name="zip" ng-model="addContact.contact.zip" type="text" class="form-control">
+        <div ng-if="addContactForm.zip.$touched" ng-messages="addContactForm.zip.$error" class="help-block">
+          <div ng-messages-include="/views/messages.html"></div>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error': addContactForm.phone.$touched && addContactForm.phone.$invalid }">
+        <label>Phone</label>
+        <input ng-minlength="10" name="phone" ng-model="addContact.contact.phone" type="text" class="form-control">
+        <div ng-if="addContactForm.phone.$touched" ng-messages="addContactForm.phone.$error" class="help-block">
+          <div ng-messages-include="/views/messages.html"></div>
+        </div>
+      </div>
+
+  </div>
+  <div class="modal-footer">
+      <button ng-disabled="addContactForm.$invalid" class="btn btn-primary" type="submit">Save</button>
+      <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</form>

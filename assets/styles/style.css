@@ -1,0 +1,12 @@
+.list-inline {
+  display:inline-block;
+  margin-left: 20px;
+}
+.list-inline li {
+  display:inline-block;
+  margin: 0;
+}
+/*.list-inline li:after {
+  content:'|';
+  margin:0 5px 0 5px;
+}*/

@@ -44,12 +44,15 @@ module.exports = {
 
   beforeCreate: function(values,cb) {
     var address = values.street + ', ' + values.city + ', ' + values.zip;
-    geocoder.geocode(address, function ( err, data ) {
-      // console.log(data.results[0].geometry.location.lat,data.results[0].geometry.location.lng);
-      values.lat = data.results[0].geometry.location.lat;
-      values.lng = data.results[0].geometry.location.lng;
-      cb();
-    });
+    if(address){
+      geocoder.geocode(address, function ( err, data ) {
+        if(typeof data.results[0] != 'undefined') {
+          values.lat = data.results[0].geometry.location.lat;
+          values.lng = data.results[0].geometry.location.lng;
+          cb();
+        }
+      });
+    }
   }
 };
 
